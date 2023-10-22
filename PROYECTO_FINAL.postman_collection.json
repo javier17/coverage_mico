@@ -1,0 +1,1226 @@
+{
+	"info": {
+		"_postman_id": "1d473f83-7184-4443-bbd8-d06c4ec1e08a",
+		"name": "PROYECTO_FINAL",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23881024",
+		"_collection_link": "https://org-miso.postman.co/workspace/Team-Workspace~2a803baf-942a-4792-88ab-dbce9603c39f/collection/23881024-1d473f83-7184-4443-bbd8-d06c4ec1e08a?action=share&source=collection_link&creator=23881024"
+	},
+	"item": [
+		{
+			"name": "API",
+			"item": [
+				{
+					"name": "users",
+					"item": [
+						{
+							"name": "PERMISSIONS",
+							"item": [
+								{
+									"name": "CREATE",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{refresh_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"table\":\"USERS\",\n    \"access\":\"DELETE\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_api}}/{{path_permissions}}",
+											"host": [
+												"{{base_api}}"
+											],
+											"path": [
+												"{{path_permissions}}"
+											]
+										},
+										"description": "Crea un nuevo permiso."
+									},
+									"response": []
+								},
+								{
+									"name": "GET_ALL",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{refresh_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "{{base_api}}/{{path_permissions}}/filter",
+											"host": [
+												"{{base_api}}"
+											],
+											"path": [
+												"{{path_permissions}}",
+												"filter"
+											]
+										},
+										"description": "Obtiene una lista de todos los permisos."
+									},
+									"response": []
+								},
+								{
+									"name": "UPDATE",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{refresh_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"access\": \"DELETE\",\n    \"name\": \"dsf\",\n    \"rols\": [\n        1,\n        2\n    ],\n    \"table\": \"USERS\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_api}}/{{path_permissions}}/2",
+											"host": [
+												"{{base_api}}"
+											],
+											"path": [
+												"{{path_permissions}}",
+												"2"
+											]
+										},
+										"description": "Actualiza la información de un permiso existente."
+									},
+									"response": []
+								},
+								{
+									"name": "DELETE",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{refresh_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{base_api}}/{{path_permissions}}/1",
+											"host": [
+												"{{base_api}}"
+											],
+											"path": [
+												"{{path_permissions}}",
+												"1"
+											]
+										},
+										"description": "Elimina un permiso existente."
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "ROLES",
+							"item": [
+								{
+									"name": "CREATE",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{refresh_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"id\": 4,\n    \"name\": \"Empeladsod\",\n    \"permissions\": [\n        1,\n        3,\n        2\n    ]\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_api_micro_usuarios}}/{{path_rols}}",
+											"host": [
+												"{{base_api_micro_usuarios}}"
+											],
+											"path": [
+												"{{path_rols}}"
+											]
+										},
+										"description": "Crea un nuevo rol."
+									},
+									"response": []
+								},
+								{
+									"name": "GET_ALL",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{refresh_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{base_api}}/{{path_rols}}",
+											"host": [
+												"{{base_api}}"
+											],
+											"path": [
+												"{{path_rols}}"
+											]
+										},
+										"description": "Obtiene una lista de todos los roles."
+									},
+									"response": []
+								},
+								{
+									"name": "UPDATE",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{refresh_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"id\": 1,\n    \"name\": \"Administrador\",\n    \"permissions\": [1,2,3,10\n    ]\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_api}}/{{path_rols}}/1",
+											"host": [
+												"{{base_api}}"
+											],
+											"path": [
+												"{{path_rols}}",
+												"1"
+											]
+										},
+										"description": "Actualiza la información de un rol existente."
+									},
+									"response": []
+								},
+								{
+									"name": "DELETE",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{refresh_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{base_api}}/{{path_rols}}/1",
+											"host": [
+												"{{base_api}}"
+											],
+											"path": [
+												"{{path_rols}}",
+												"1"
+											]
+										},
+										"description": "Elimina un rol existente."
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "USERS",
+							"item": [
+								{
+									"name": "GET_ONE",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{refresh_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{base_api}}/{{path_users}}/2",
+											"host": [
+												"{{base_api}}"
+											],
+											"path": [
+												"{{path_users}}",
+												"2"
+											]
+										},
+										"description": "Obtiene información del usuario autenticado."
+									},
+									"response": []
+								},
+								{
+									"name": "GET_ALL",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{refresh_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"_order_by\": [\n        {\n            \"field\": \"username\",\n            \"direction\": \"desc\"\n        } //        {\"field\": \"createdAt\", \"direction\": \"desc\"},\n    ],\n    \"_page\": 1,\n    \"_per_page\": 10,\n    \"_select_fields\": [\n        \"id\",\n        \"username\",\n        \"rols\"\n    ]\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_api}}/{{path_users}}/filter",
+											"host": [
+												"{{base_api}}"
+											],
+											"path": [
+												"{{path_users}}",
+												"filter"
+											]
+										},
+										"description": "Obtiene una lista de todos los usuarios."
+									},
+									"response": []
+								},
+								{
+									"name": "UPDATE",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{refresh_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"email\": \"{{default_email}}\",\n    \"username\": \"{{default_user}}\",\n    \"rols\": [\n        1,\n        2\n    ]\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_api}}/{{path_users}}/2",
+											"host": [
+												"{{base_api}}"
+											],
+											"path": [
+												"{{path_users}}",
+												"2"
+											]
+										},
+										"description": "Actualiza la información de un usuario existente."
+									},
+									"response": []
+								},
+								{
+									"name": "DELETE",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{refresh_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{base_api}}/{{path_users}}/1",
+											"host": [
+												"{{base_api}}"
+											],
+											"path": [
+												"{{path_users}}",
+												"1"
+											]
+										},
+										"description": "Elimina un usuario existente."
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "PING",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_api}}/ping",
+									"host": [
+										"{{base_api}}"
+									],
+									"path": [
+										"ping"
+									]
+								},
+								"description": "Verifica si el servicio está disponible."
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "AUTH",
+					"item": [
+						{
+							"name": "LOGIN",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"let jsonData = JSON.parse(responseBody);",
+											"pm.collectionVariables.set('token', jsonData.response.token);",
+											"pm.collectionVariables.set('refresh_token', jsonData.response.refresh_token);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"username\":\"{{default_user}}\",\n    \"password\":\"{{default_password}}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_api}}/{{path_users}}/login",
+									"host": [
+										"{{base_api}}"
+									],
+									"path": [
+										"{{path_users}}",
+										"login"
+									]
+								},
+								"description": "Generación de token\n\n- **Descripción:** Genera el token de usuario, ingresando los campos \"username\" y \"password\"\n\n|  |  |\n| --- | --- |\n| Método | POST |\n| Ruta | /users/auth |\n| Parámetros | N/A |\n| Cuerpo | `{\"username\": nombre de usuario, \"password\": contraseña del usuario}` |\n\n- **Respuestas**\n\n| Código | Cuerpo | Descripción |\n| --- | --- | --- |\n| 400 |  | En el caso que alguno de los campos no esté presente en la solicitud. |\n| 404 |  | En el caso que el usuario con username y password no exista. |\n| 200 | `{\"id\": id del usuario, \"token\": Token generado para la sesión del usuario, \"expireAt\": fecha y hora de vencimiento del token en formato ISO}` | Si el usuario es válido. |"
+							},
+							"response": []
+						},
+						{
+							"name": "REFRESH",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"let jsonData = JSON.parse(responseBody);",
+											"pm.collectionVariables.set('token', jsonData.response.token);",
+											"pm.collectionVariables.set('refresh_token', jsonData.response.refresh_token);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{refresh_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_api}}/{{path_auth}}/refresh",
+									"host": [
+										"{{base_api}}"
+									],
+									"path": [
+										"{{path_auth}}",
+										"refresh"
+									]
+								},
+								"description": "Generación de token\n\n- **Descripción:** Genera el token de usuario, ingresando los campos \"username\" y \"password\"\n\n|  |  |\n| --- | --- |\n| Método | POST |\n| Ruta | /users/auth |\n| Parámetros | N/A |\n| Cuerpo | `{\"username\": nombre de usuario, \"password\": contraseña del usuario}` |\n\n- **Respuestas**\n\n| Código | Cuerpo | Descripción |\n| --- | --- | --- |\n| 400 |  | En el caso que alguno de los campos no esté presente en la solicitud. |\n| 404 |  | En el caso que el usuario con username y password no exista. |\n| 200 | `{\"id\": id del usuario, \"token\": Token generado para la sesión del usuario, \"expireAt\": fecha y hora de vencimiento del token en formato ISO}` | Si el usuario es válido. |"
+							},
+							"response": []
+						},
+						{
+							"name": "SIGNUP",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\":\"{{default_email}}\",\n    \"password\":\"{{default_password}}\",\n    \"username\":\"{{default_user}}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_api_micro_usuarios}}/{{path_users}}",
+									"host": [
+										"{{base_api_micro_usuarios}}"
+									],
+									"path": [
+										"{{path_users}}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "micro-users",
+			"item": [
+				{
+					"name": "PERMISSIONS",
+					"item": [
+						{
+							"name": "CREATE",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{refresh_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"table\":\"USERS\",\n    \"access\":\"DELETE\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_api_micro_usuarios}}/{{path_permissions}}",
+									"host": [
+										"{{base_api_micro_usuarios}}"
+									],
+									"path": [
+										"{{path_permissions}}"
+									]
+								},
+								"description": "Crea un nuevo permiso."
+							},
+							"response": []
+						},
+						{
+							"name": "GET_ALL",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{refresh_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_api_micro_usuarios}}/{{path_permissions}}",
+									"host": [
+										"{{base_api_micro_usuarios}}"
+									],
+									"path": [
+										"{{path_permissions}}"
+									]
+								},
+								"description": "Obtiene una lista de todos los permisos."
+							},
+							"response": []
+						},
+						{
+							"name": "UPDATE",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{refresh_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"access\": \"DELETE\",\n    \"name\": \"dsf\",\n    \"rols\": [\n        1,\n        2\n    ],\n    \"table\": \"USERS\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_api_micro_usuarios}}/{{path_permissions}}/2",
+									"host": [
+										"{{base_api_micro_usuarios}}"
+									],
+									"path": [
+										"{{path_permissions}}",
+										"2"
+									]
+								},
+								"description": "Actualiza la información de un permiso existente."
+							},
+							"response": []
+						},
+						{
+							"name": "DELETE",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{refresh_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{base_api_micro_usuarios}}/{{path_permissions}}/1",
+									"host": [
+										"{{base_api_micro_usuarios}}"
+									],
+									"path": [
+										"{{path_permissions}}",
+										"1"
+									]
+								},
+								"description": "Elimina un permiso existente."
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "ROLES",
+					"item": [
+						{
+							"name": "CREATE",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{refresh_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": 4,\n    \"name\": \"Empeladsod\",\n    \"permissions\": [\n        1,\n        3,\n        2\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_api_micro_usuarios}}/{{path_rols}}",
+									"host": [
+										"{{base_api_micro_usuarios}}"
+									],
+									"path": [
+										"{{path_rols}}"
+									]
+								},
+								"description": "Crea un nuevo rol."
+							},
+							"response": []
+						},
+						{
+							"name": "GET_ALL",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{refresh_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_api_micro_usuarios}}/{{path_rols}}",
+									"host": [
+										"{{base_api_micro_usuarios}}"
+									],
+									"path": [
+										"{{path_rols}}"
+									]
+								},
+								"description": "Obtiene una lista de todos los roles."
+							},
+							"response": []
+						},
+						{
+							"name": "UPDATE",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{refresh_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": 1,\n    \"name\": \"Administrador\",\n    \"permissions\": [1,2,3,10\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_api_micro_usuarios}}/{{path_rols}}/1",
+									"host": [
+										"{{base_api_micro_usuarios}}"
+									],
+									"path": [
+										"{{path_rols}}",
+										"1"
+									]
+								},
+								"description": "Actualiza la información de un rol existente."
+							},
+							"response": []
+						},
+						{
+							"name": "DELETE",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{refresh_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{base_api_micro_usuarios}}/{{path_rols}}/1",
+									"host": [
+										"{{base_api_micro_usuarios}}"
+									],
+									"path": [
+										"{{path_rols}}",
+										"1"
+									]
+								},
+								"description": "Elimina un rol existente."
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "USERS",
+					"item": [
+						{
+							"name": "GET_ONE",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{refresh_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_api_micro_usuarios}}/{{path_users}}/2",
+									"host": [
+										"{{base_api_micro_usuarios}}"
+									],
+									"path": [
+										"{{path_users}}",
+										"2"
+									]
+								},
+								"description": "Obtiene información del usuario autenticado."
+							},
+							"response": []
+						},
+						{
+							"name": "GET_ALL",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{refresh_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"_order_by\": [\n        {\n            \"field\": \"username\",\n            \"direction\": \"desc\"\n        } //        {\"field\": \"createdAt\", \"direction\": \"desc\"},\n    ],\n    \"_filters\": {\n        \"username\": [\n            \"sportstyle\"\n        ]\n    },\n    \"_page\": 1,\n    \"_per_page\": 10,\n    \"_select_fields\": [\n        \"id\", \"username\", \"email\",\"rols\",\"salt\",\"password\"\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_api_micro_usuarios}}/{{path_users}}/filter",
+									"host": [
+										"{{base_api_micro_usuarios}}"
+									],
+									"path": [
+										"{{path_users}}",
+										"filter"
+									]
+								},
+								"description": "Obtiene una lista de todos los usuarios."
+							},
+							"response": []
+						},
+						{
+							"name": "UPDATE",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{refresh_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"username\":\"{{default_user}}s\",\n    \"email\":\"{{default_email}}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_api_micro_usuarios}}/{{path_users}}/2",
+									"host": [
+										"{{base_api_micro_usuarios}}"
+									],
+									"path": [
+										"{{path_users}}",
+										"2"
+									]
+								},
+								"description": "Actualiza la información de un usuario existente."
+							},
+							"response": []
+						},
+						{
+							"name": "PASSSWORD",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{refresh_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"password\":\"nueva\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_api_micro_usuarios}}/{{path_users}}/password",
+									"host": [
+										"{{base_api_micro_usuarios}}"
+									],
+									"path": [
+										"{{path_users}}",
+										"password"
+									]
+								},
+								"description": "Actualiza la información de un usuario existente."
+							},
+							"response": []
+						},
+						{
+							"name": "DELETE",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{refresh_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{base_api_micro_usuarios}}/{{path_users}}/1",
+									"host": [
+										"{{base_api_micro_usuarios}}"
+									],
+									"path": [
+										"{{path_users}}",
+										"1"
+									]
+								},
+								"description": "Elimina un usuario existente."
+							},
+							"response": []
+						},
+						{
+							"name": "VERIFY",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"RUV\":\"ZDBmMmM4MTY5ZWYxYmJiNzNiMWNkMjQzMzVkMDc0MjhiZTk2MDlkMjFiMTA2NTM0MjYxMDQzZTFmZDJjOGY2NToy\",\n    \"verifyToken\":\"\",\n    \"score\":\"50\",\n    \"userIdentifier\":\"3\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_api_micro_usuarios}}/{{path_users}}/verify",
+									"host": [
+										"{{base_api_micro_usuarios}}"
+									],
+									"path": [
+										"{{path_users}}",
+										"verify"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "AUTH",
+					"item": [
+						{
+							"name": "LOGIN",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"let jsonData = JSON.parse(responseBody);",
+											"pm.collectionVariables.set('token', jsonData.response.token);",
+											"pm.collectionVariables.set('refresh_token', jsonData.response.refresh_token);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"username\":\"{{default_user}}\",\n    \"password\":\"{{default_password}}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_api_micro_usuarios}}/{{path_auth}}/login",
+									"host": [
+										"{{base_api_micro_usuarios}}"
+									],
+									"path": [
+										"{{path_auth}}",
+										"login"
+									]
+								},
+								"description": "Generación de token\n\n- **Descripción:** Genera el token de usuario, ingresando los campos \"username\" y \"password\"\n\n|  |  |\n| --- | --- |\n| Método | POST |\n| Ruta | /users/auth |\n| Parámetros | N/A |\n| Cuerpo | `{\"username\": nombre de usuario, \"password\": contraseña del usuario}` |\n\n- **Respuestas**\n\n| Código | Cuerpo | Descripción |\n| --- | --- | --- |\n| 400 |  | En el caso que alguno de los campos no esté presente en la solicitud. |\n| 404 |  | En el caso que el usuario con username y password no exista. |\n| 200 | `{\"id\": id del usuario, \"token\": Token generado para la sesión del usuario, \"expireAt\": fecha y hora de vencimiento del token en formato ISO}` | Si el usuario es válido. |"
+							},
+							"response": []
+						},
+						{
+							"name": "SIGNUP",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\":\"{{default_email}}\",\n    \"password\":\"{{default_password}}\",\n    \"username\":\"{{default_user}}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_auth}}/{{path_users}}",
+									"host": [
+										"{{base_auth}}"
+									],
+									"path": [
+										"{{path_users}}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "PING",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_api_micro_usuarios}}/app/ping",
+							"host": [
+								"{{base_api_micro_usuarios}}"
+							],
+							"path": [
+								"app",
+								"ping"
+							]
+						},
+						"description": "Verifica si el servicio está disponible."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "micro-auth",
+			"item": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_api",
+			"value": "http://localhost:5001/api",
+			"type": "string"
+		},
+		{
+			"key": "base_api_micro_usuarios",
+			"value": "http://localhost:5002",
+			"type": "string"
+		},
+		{
+			"key": "path_users",
+			"value": "users",
+			"type": "string"
+		},
+		{
+			"key": "path_rols",
+			"value": "rols",
+			"type": "string"
+		},
+		{
+			"key": "path_auth",
+			"value": "auth",
+			"type": "string"
+		},
+		{
+			"key": "refresh_token",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "default_user",
+			"value": "superadmin",
+			"type": "string"
+		},
+		{
+			"key": "default_password",
+			"value": "superadmin123*",
+			"type": "string"
+		},
+		{
+			"key": "token",
+			"value": ""
+		},
+		{
+			"key": "default_email",
+			"value": "superadmin@gmail.com",
+			"type": "string"
+		}
+	]
+}

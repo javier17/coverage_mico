@@ -1,0 +1,111 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "API",
+      "type": "python",
+      "request": "launch",
+      "program": "${workspaceFolder}/api/src/main.py",
+      "args": [],
+      "cwd": "${workspaceFolder}",
+      "env": {
+        "APP_PORT": "5001",
+        "PYTHONPATH": "${workspaceFolder}",
+        "USER_SERVICE": "http://localhost:5002",
+        "SECURITY_SERVICE": "http://localhost:5003",
+        "COMPANY_SERVICE": "http://localhost:5010"
+      },
+      "stopOnEntry": false
+    },
+    {
+      "name": "API Testing",
+      "type": "python",
+      "request": "launch",
+      "program": "${workspaceFolder}/venv/Scripts/pytest.exe", // Ruta al ejecutable de pytest en tu entorno virtual
+      "args": ["${workspaceFolder}/api"], // Ruta a la carpeta de pruebas de tu API
+      "cwd": "${workspaceFolder}",
+      "env": {
+        "APP_PORT": "5001", // Variables de entorno para tu aplicación
+        "PYTHONPATH": "${workspaceFolder}", // Asegúrate de tener PYTHONPATH adecuado
+        "USER_SERVICE": "http://localhost:5002",
+        "SECURITY_SERVICE": "http://localhost:5003"
+      },
+      "stopOnEntry": false
+    },
+    {
+      "name": "MICRO_USERS",
+      "type": "python",
+      "request": "launch",
+      "program": "${workspaceFolder}/micro_users/src/main.py",
+      "args": [],
+      "cwd": "${workspaceFolder}",
+      "env": {
+        "APP_PORT": "5002",
+        "PYTHONPATH": "${workspaceFolder}",
+        "SECURITY_SERVICE": "http://localhost:5003",
+        "DB_TYPE": "sqlite",
+        "DB_USER": "postgres",
+        "DB_PASSWORD": "postgres",
+        "DB_HOST": "localhost",
+        "DB_PORT": "5432",
+        "DB_NAME": "postgres"
+      },
+      "stopOnEntry": false
+    },
+    {
+      "name": "MICRO_AUTH",
+      "type": "python",
+      "request": "launch",
+      "program": "${workspaceFolder}/micro_auth/src/main.py",
+      "args": [],
+      "cwd": "${workspaceFolder}",
+      "env": {
+        "APP_PORT": "5003",
+        "PYTHONPATH": "${workspaceFolder}",
+        "JWT_SECRET_KEY": "JWT_SECRET_KEY",
+        "DB_TYPE": "sqlite",
+        "DB_USER": "postgres",
+        "DB_PASSWORD": "postgres",
+        "DB_HOST": "localhost",
+        "DB_PORT": "5432",
+        "DB_NAME": "postgres"
+      },
+      "stopOnEntry": false
+    },
+    {
+      "name": "TEST_SECURITY",
+      "type": "python",
+      "request": "launch",
+      "program": "${workspaceFolder}/integration_test/security_test.py",
+      "args": [],
+      "cwd": "${workspaceFolder}",
+      "env": {
+        "PYTHONPATH": "${workspaceFolder}",
+        "LOGIN_ENDPOINT": "http://3.128.201.132:5001/api/users/login",
+        "USER_INFO_ENDPOINT": "http://3.128.201.132:5001/api/users/"
+      },
+      "stopOnEntry": false
+    },
+    {
+      "name": "MICRO_COMPANY",
+      "type": "python",
+      "request": "launch",
+      "program": "${workspaceFolder}/micro_companies/src/main.py",
+      "args": [],
+      "cwd": "${workspaceFolder}",
+      "env": {
+        "APP_PORT": "5010",
+        "SECURITY_SERVICE": "http://localhost:5003",
+        "PYTHONPATH": "${workspaceFolder}",
+        "JWT_SECRET_KEY": "JWT_SECRET_KEY",
+        "DB_TYPE": "sqlite",
+        "DB_USER": "postgres",
+        "DB_PASSWORD": "postgres",
+        "DB_HOST": "localhost",
+        "DB_PORT": "5432",
+        "DB_NAME": "postgres"
+      },
+      "stopOnEntry": false
+    }
+  ]
+}

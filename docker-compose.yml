@@ -1,0 +1,123 @@
+version: '3'
+services:
+  api:
+    build: ./api
+    #image: ${/BACKEND_ENV/BACKEND_API_IMAGE}
+    container_name: api
+    ports:
+      - "5001:5001"
+    environment:
+      APP_PORT: 5001
+      PYTHONPATH: /app
+      ENVIRONMENT: development
+      FLASK_APP: main.py
+      USER_SERVICE: http://micro_users:5002
+      SECURITY_SERVICE: http://micro_auth:5003
+      COMPANY_SERVICE: http://micro_companies:5010 
+    volumes:
+      - ./src:/src
+    networks:
+      - api
+  micro_users:
+    build: ./micro_users
+    #image: ${/BACKEND_ENV/BACKEND_MICRO_USERS_IMAGE}
+    container_name: micro_users
+    ports:
+      - "5002:5002"
+    environment:
+      APP_PORT: 5002
+      PYTHONPATH: /app
+      ENVIRONMENT: development
+      FLASK_APP: main.py
+      SECURITY_SERVICE: http://micro_auth:5003
+      DB_TYPE: sqlite
+      DB_NAME: backend_db
+      DB_HOST: backend_db
+      DB_PORT: 5432
+      DB_USER: postgres
+      DB_PASSWORD: postgres
+    depends_on:
+      backend_db:
+        condition: service_healthy
+    volumes:
+      - ./src:/src
+    networks:
+      - db_backend
+      - api 
+  micro_auth:
+    container_name: micro_auth
+    build: ./micro_auth
+    #image: ${/BACKEND_ENV/BACKEND_MICRO_AUTH_IMAGE}
+    ports:
+      - "5003:5003"
+    environment:
+      APP_PORT: 5003
+      PYTHONPATH: /app
+      ENVIRONMENT: development
+      FLASK_APP: main.py
+      DB_TYPE: sqlite
+      DB_NAME: backend_db
+      DB_HOST: backend_db
+      DB_PORT: 5432
+      DB_USER: postgres
+      DB_PASSWORD: postgres
+      USER_SERVICE: users
+      SECURITY_SERVICE: auth
+    depends_on:
+      backend_db:
+        condition: service_healthy
+    volumes:
+      - ./src:/src
+    networks:
+      - db_backend
+      - api
+  micro_companies:
+    container_name: micro_companies
+    build: ./micro_companies
+    #image: ${/BACKEND_ENV/BACKEND_MICRO_COMPANIES_IMAGE}
+    ports:
+      - "5010:5010"
+    environment:
+      APP_PORT: 5010
+      PYTHONPATH: /app
+      ENVIRONMENT: development
+      FLASK_APP: main.py
+      DB_TYPE: sqlite
+      DB_NAME: backend_db
+      DB_HOST: backend_db
+      DB_PORT: 5432
+      DB_USER: postgres
+      DB_PASSWORD: postgres
+      USER_SERVICE: users
+      SECURITY_SERVICE: http://micro_auth:5003
+    depends_on:
+      backend_db:
+        condition: service_healthy
+    volumes:
+      - ./src:/src
+    networks:
+      - db_backend
+      - api
+  backend_db:
+    container_name: backend_db
+    image: postgres
+    environment:
+      POSTGRES_DB: backend_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5435:5432"
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U postgres" ]
+      interval: 2s
+      timeout: 5s
+      retries: 5
+    networks:
+      - db_backend
+networks:
+  db_backend:
+    name: db-backend-networks
+    driver: bridge
+  api:
+    name: api-networks
+    driver: bridge
