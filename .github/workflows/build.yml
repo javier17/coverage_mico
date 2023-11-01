@@ -25,5 +25,5 @@ jobs:
       - name: pruebas+coverage
         id: pruebas
         run: | 
-          python -m coverage run -m pytest micro_auth
+          python -m coverage run -m pytest micro_auth/
           python -m coverage xml -i 
