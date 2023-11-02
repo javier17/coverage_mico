@@ -72,7 +72,7 @@ class UserService:
         host = UserService().host
 
         response = requests.post(
-            f"{host}/{service_path}/filter", 
+            f"{host}/{service_path}/all", 
             headers=request.headers, 
             json=data)
         

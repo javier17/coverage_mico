@@ -8,6 +8,7 @@ class BaseConfig(object):
     PRODUCT_SERVICE = os.environ.get("PRODUCT_SERVICE", default="")
     SECURITY_SERVICE = os.environ.get("SECURITY_SERVICE", default="http://localhost:5003")
     COMPANY_SERVICE = os.environ.get("COMPANY_SERVICE", default="http://localhost:5010")
+    PROJECT_SERVICE = os.environ.get("PROJECT_SERVICE", default="http://localhost:5011")    
 
 
 class DevelopmentConfig(BaseConfig):

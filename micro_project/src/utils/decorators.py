@@ -1,19 +1,20 @@
 from functools import wraps
 
 from flask import request
-from api.src.services.auth_service import *
-from api.src.utils.utils import *
 
+from jwt.exceptions import ExpiredSignatureError
+from micro_project.src.models.models import db
+from micro_project.src.utils.utils import *
+from micro_project.src.services.security import *
 
-def authorizer(access=None, level=None):
+def authorizer():
     def decorator(func):
         @wraps(func)
-        def wrapper(*args, **kwargs):
-
-            data = AuthService.get_token_data(request)
+        def wrapper(*args, **kwargs):            
+            data = SecurityService.get_tokendata(request)     
             if not data:
                 return ResponseTools.build_response(message='Unauthorized', code=401)
-
+           
             return func(*args, **kwargs)
         return wrapper
     return decorator
@@ -24,7 +25,13 @@ def handle_error(func):
     def decorated(*args, **kwargs):
         try:
             return func(*args, **kwargs)
+        except ExpiredSignatureError as e:
+            db.session.rollback()
+            message = 'Failed authentication'
+            error_message = str(e)
+            return ResponseTools.build_response(message=message, error_message=error_message, code=401)
         except Exception as e:
+            db.session.rollback()
             message = 'Unexpected error'
             error_message = str(e)
             return ResponseTools.build_response(message=message, error_message=error_message, code=500)
@@ -46,3 +53,4 @@ def validate_required_fields(required_fields):
             return func(*args, **kwargs)
         return wrapper
     return decorator
+

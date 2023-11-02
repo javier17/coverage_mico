@@ -21,6 +21,10 @@ jobs:
         id: pruebas
         run: | 
           python -m coverage run -m pytest micro_auth/
+          python -m coverage run -m pytest micro_companies/
+          python -m coverage run -m pytest micro_project/
+          python -m coverage run -m pytest micro_users/
+          python -m coverage run -m pytest api/
           python -m coverage xml -i    
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
