@@ -9,4 +9,3 @@ base_url = '/app'
 @handle_error
 def get():
     return 'pong'
-
