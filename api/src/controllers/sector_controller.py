@@ -1,7 +1,6 @@
 from flask import Blueprint, request
 from api.src.services.sector_service import SectorService
-from api.src.utils.decorators import *
-from api.src.utils.utils import *
+from api.src.utils.decorators import handle_error
 
 mod = Blueprint('sector_controller', __name__)
 base_url = '/api/sectors'
