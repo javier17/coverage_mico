@@ -1,7 +1,6 @@
 from flask import Blueprint, request
 from api.src.services.company_service import CompanyService
-from api.src.utils.decorators import *
-from api.src.utils.utils import *
+from api.src.utils.decorators import handle_error, authorizer
 
 mod = Blueprint('company_controller', __name__)
 base_url = '/api/companies'
