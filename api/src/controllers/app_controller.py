@@ -7,6 +7,6 @@ base_url = '/api'
 
 @mod.route(f'{base_url}/ping', methods=['GET'])
 @handle_error
-defs get():
+def get():
     return 'pong'
 

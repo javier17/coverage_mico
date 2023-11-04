@@ -19,6 +19,9 @@ from micro_auth.src.models.models import RefreshToken, db
 
 class DbService:
 
+    def __init__(self):
+        pass
+
     def db_generic_create(data, model_class):
         new_instance = model_class()
         DbTools.assign_related_fields(data, model_class, new_instance)
@@ -27,7 +30,7 @@ class DbService:
 
         return ResponseTools.build_response(message=f'{model_class.__name__} created successfully', code=201, response=DbTools.model_instance_to_dict(new_instance))
 
-    def clean_expired_tokens():
+    def clean_expired_tokens(self):
         date_now = datetime.now()
         RefreshToken.query.filter(
             RefreshToken.expiration_date <= date_now).delete()

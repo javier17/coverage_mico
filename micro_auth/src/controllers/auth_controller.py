@@ -34,7 +34,7 @@ def delete(model_id):
 def create_token():   
     #Eliminar tokens vencidos    
     date_now=datetime.now()
-    DbService.clean_expired_tokens()  
+    DbService.clean_expired_tokens('')  
     
     #Generrar tokens
     user_data =request.json
@@ -55,7 +55,7 @@ def create_token():
 def refresh_token():   
 
     #Eliminar tokens vencidos    
-    DbService.clean_expired_tokens()  
+    DbService.clean_expired_tokens('')  
     date_now=datetime.now()
 
     #validar token
@@ -81,7 +81,7 @@ def refresh_token():
 @mod.route(f'{base_url}/me', methods=['GET'])
 @handle_error
 def get_me():
-    DbService.clean_expired_tokens()  
+    DbService.clean_expired_tokens('')  
     
     #validar token
     old_refresh_token = request.headers.environ['HTTP_AUTHORIZATION'].split("Bearer ")[1]
