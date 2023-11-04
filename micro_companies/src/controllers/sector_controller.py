@@ -1,10 +1,7 @@
 
 from flask import Blueprint, request
 from micro_companies.src.models.models import CompanySector, CompanySectorsShema, db
-
-from micro_companies.src.utils.utils import *
-
-from micro_companies.src.utils.decorators import *
+from micro_companies.src.utils.decorators import handle_error, DbService
 
 mod = Blueprint('sector_controller', __name__)
 

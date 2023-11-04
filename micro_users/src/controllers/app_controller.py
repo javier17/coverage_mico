@@ -1,5 +1,5 @@
 from flask import Blueprint
-from micro_users.src.utils.decorators import *
+from micro_users.src.utils.decorators import handle_error
 
 mod = Blueprint('app_controller', __name__)
 base_url = '/app'

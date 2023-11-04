@@ -8,7 +8,7 @@ import bcrypt
 from flask import Blueprint, request
 
 from micro_companies.src.models.models import Company, CompanyShema, db
-from micro_companies.src.utils.decorators import *
+from micro_companies.src.utils.decorators import handle_error, validate_required_fields, authorizer
 from micro_companies.src.utils.utils import *
 
 

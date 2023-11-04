@@ -1,6 +1,6 @@
 from flask import Blueprint, request
 from api.src.services.project_service import ProjectService
-from api.src.utils.decorators import *
+from api.src.utils.decorators import handle_error, authorizer
 from api.src.utils.utils import *
 
 

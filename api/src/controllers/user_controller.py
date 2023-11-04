@@ -1,7 +1,6 @@
 from flask import Blueprint, request
 from api.src.services.user_service import UserService
-from api.src.utils.decorators import *
-from api.src.utils.utils import *
+from api.src.utils.decorators import handle_error, authorizer
 
 from flask_cors import cross_origin
 
