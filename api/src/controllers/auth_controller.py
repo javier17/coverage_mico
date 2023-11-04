@@ -1,7 +1,6 @@
 from flask import Blueprint, request
 from api.src.services.auth_service import AuthService
-from api.src.utils.decorators import *
-from api.src.utils.utils import *
+from api.src.utils.decorators import handle_error, authorizer
 from flask_cors import cross_origin
 
 mod = Blueprint('auth_controller', __name__)
